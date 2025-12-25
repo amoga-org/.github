@@ -4,7 +4,7 @@ on:
     push:
         paths:
             - ".github/scripts/update-readme.js"
-            - ".github/workflows/update-readme.yml"
+            - ".github/workflows/readme.yml"
         branches:
             - main
     schedule:

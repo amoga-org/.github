@@ -122,7 +122,7 @@ async function getAllRepos(octokit, orgName) {
         while (true) {
             const response = await octokit.rest.repos.listForOrg({
                 org: orgName,
-                type: "all",
+                type: "public",
                 sort: "updated",
                 direction: "desc",
                 per_page: perPage,
