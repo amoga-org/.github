@@ -20,8 +20,8 @@ async function main() {
         // Fetch all repositories from the organization using GitHub API pagination
         const repos = await getAllRepos(octokit, orgName);
 
-        // Filter out archived repos and sort
-        const activeRepos = repos.filter((repo) => !repo.archived);
+        // Filter out archived repos and .github repo, then sort
+        const activeRepos = repos.filter((repo) => !repo.archived && repo.name !== ".github");
         const sortedRepos = sortRepositories(activeRepos, true);
 
         // Build header section with welcome message
