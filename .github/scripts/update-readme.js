@@ -54,9 +54,11 @@ async function main() {
  * Initialize and configure the Octokit GitHub API client.
  */
 function initializeOctokit() {
-    return new Octokit({
-        auth: process.env.GITHUB_TOKEN,
-    });
+    const options = {};
+    if (process.env.GITHUB_TOKEN) {
+        options.auth = process.env.GITHUB_TOKEN;
+    }
+    return new Octokit(options);
 }
 
 /**
