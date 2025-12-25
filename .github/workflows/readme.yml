@@ -26,8 +26,8 @@ jobs:
 
             - name: Install dependencies
               run: |
-                  npm init -y
-                  npm install @octokit/rest csv-writer
+                  echo '{"name":"readme-updater","private":true}' > package.json
+                  npm install @octokit/rest
 
             - name: Fetch repositories and generate files
               env:
