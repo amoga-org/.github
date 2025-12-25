@@ -11,6 +11,9 @@ on:
         - cron: "0 18 * * *"
     workflow_dispatch:
 
+permissions:
+    contents: write
+
 jobs:
     update-repo-list:
         runs-on: ubuntu-latest
