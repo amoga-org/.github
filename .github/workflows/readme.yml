@@ -34,7 +34,7 @@ jobs:
 
             - name: Fetch repositories and generate files
               env:
-                  ORG_NAME: amoga-io
+                  ORG_NAME: amoga-org
               run: node .github/scripts/update-readme.js
 
             - name: Commit and push changes

@@ -59,7 +59,7 @@ function initializeOctokit() {
  * Get the target organization name from environment variables with fallback.
  */
 function getOrganizationName() {
-    return process.env.ORG_NAME || "amoga-io";
+    return process.env.ORG_NAME || "amoga-org";
 }
 
 /**
@@ -216,7 +216,7 @@ function generateTableRows(repos, includeLink = true, includeTags = true) {
  * Build the header section with welcome message and pinned repositories (runtime, studio).
  */
 function buildHeaderSection() {
-    return `Welcome to the Amoga.io organization!`;
+    return `Welcome to the Amoga organization!`;
 }
 
 /**
