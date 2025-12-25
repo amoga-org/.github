@@ -3,9 +3,6 @@ const fs = require("fs").promises;
 
 const README_FILE_PATH = "profile/README.md";
 
-// Constants for repository categorization
-const CLOUDFLARE_PREFIX = "cf-";
-
 // Threshold for considering a repository as "recently updated" (in days)
 const RECENT_UPDATE_THRESHOLD_DAYS = 3;
 
@@ -23,24 +20,21 @@ async function main() {
         // Fetch all repositories from the organization using GitHub API pagination
         const repos = await getAllRepos(octokit, orgName);
 
-        // Categorize repos into cloudflare/other groups and sort each category
-        const categorizedRepos = categorizeRepositories(repos);
-        const { cloudflareRepos, otherRepos } = categorizedRepos;
+        // Filter out archived repos and sort
+        const activeRepos = repos.filter((repo) => !repo.archived);
+        const sortedRepos = sortRepositories(activeRepos, true);
 
-        // Build header section with welcome message and pinned repos (runtime, studio)
+        // Build header section with welcome message
         const header = buildHeaderSection();
 
-        // Build regular repositories table with tags column
-        const reposSection = buildRepositoriesSection(otherRepos);
-
-        // Build Cloudflare repositories table with deployment link column
-        const cfSection = buildCloudflareSection(cloudflareRepos);
+        // Build public repositories table with link column
+        const reposSection = buildRepositoriesSection(sortedRepos);
 
         // Build footer section with auto-generation notice
         const footer = buildFooterSection();
 
         // Combine all sections into complete README markdown content
-        const readmeContent = assembleReadme(header, reposSection, cfSection, footer);
+        const readmeContent = assembleReadme(header, reposSection, footer);
 
         // Write the assembled README content to file
         await writeReadme(readmeContent);
@@ -164,24 +158,6 @@ async function getAllRepos(octokit, orgName) {
 }
 
 /**
- * Categorize repositories into cloudflare/other groups based on naming patterns and sort each.
- */
-function categorizeRepositories(repos) {
-    // Filter out archived repositories first
-    const activeRepos = repos.filter((repo) => !repo.archived);
-
-    // Categorize based on naming patterns
-    const cloudflareRepos = activeRepos.filter((repo) => repo.name.startsWith(CLOUDFLARE_PREFIX));
-    const otherRepos = activeRepos.filter((repo) => !repo.name.startsWith(CLOUDFLARE_PREFIX));
-
-    // Sort each category
-    return {
-        cloudflareRepos: sortRepositories(cloudflareRepos, false),
-        otherRepos: sortRepositories(otherRepos, true),
-    };
-}
-
-/**
  * Sort repositories with recently updated first (alphabetically), then older by date (newest first).
  * @param {Array} repos - List of repositories to sort
  * @param {boolean} sortAscending - If true, sort recent repos A-Z. If false, sort Z-A.
@@ -240,10 +216,7 @@ function generateTableRows(repos, includeLink = true, includeTags = true) {
  * Build the header section with welcome message and pinned repositories (runtime, studio).
  */
 function buildHeaderSection() {
-    return `Welcome to the Amoga.io organization!
-
-| [runtime](https://github.com/amoga-io/runtime) | [studio](https://github.com/amoga-io/studio) |
-|---|---|`;
+    return `Welcome to the Amoga.io organization!`;
 }
 
 /**
@@ -268,34 +241,22 @@ function buildFooterSection() {
 }
 
 /**
- * Build the repositories section with tags column (excludes homepage links).
+ * Build the public repositories section with link column.
  */
 function buildRepositoriesSection(repos) {
-    const tableHeader = `| Repository | Description | Tags | Updated |
-|------------|-------------|------|---------|`;
-
-    return buildTableSection("Repositories", repos, tableHeader, false, true);
-}
-
-/**
- * Build the Cloudflare repositories section with deployment link column (excludes tags).
- */
-function buildCloudflareSection(repos) {
     const tableHeader = `| Repository | Description | Link | Updated |
 |------------|-------------|------|---------|`;
 
-    return buildTableSection("Cloudflare Repositories", repos, tableHeader, true, false);
+    return buildTableSection("Public Repositories", repos, tableHeader, true, false);
 }
+
 /**
  * Assemble all README sections into a complete markdown document with proper spacing.
  */
-function assembleReadme(header, reposSection, cfSection, footer) {
+function assembleReadme(header, reposSection, footer) {
     return `${header}
 
 ${reposSection}
-
-${cfSection}
-
 
 ${footer}
 `;
