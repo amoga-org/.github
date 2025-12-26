@@ -1,10 +1,11 @@
 Welcome to the Amoga organization!
 
-### Public Repositories (2)
+### Public Repositories (3)
 
 | Repository | Description | Link | Updated |
 |------------|-------------|------|---------|
 | [docs-template](https://github.com/amoga-org/docs-template) | Astro based Template Repo for all Amoga Documentation. |  | recently |
+| [healthchecks](https://github.com/amoga-org/healthchecks) |  |  | recently |
 | [claude-usage](https://github.com/amoga-org/claude-usage) | Built by Claude, for Claude |  | 1 week ago |
 
 ---
