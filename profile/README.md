@@ -4,7 +4,7 @@ Welcome to the Amoga organization!
 
 | Repository | Description | Link | Updated |
 |------------|-------------|------|---------|
-| [superset](https://github.com/amoga-org/superset) | Apache Superset is a Data Visualization and Data Exploration Platform | [Link](https://superset.apache.org/) | 4 days ago |
+| [superset](https://github.com/amoga-org/superset) | Apache Superset is a Data Visualization and Data Exploration Platform | [Link](https://superset.apache.org/) | 5 days ago |
 | [healthchecks](https://github.com/amoga-org/healthchecks) |  |  | 1 week ago |
 | [docs-template](https://github.com/amoga-org/docs-template) | Astro based Template Repo for all Amoga Documentation. |  | 1 week ago |
 | [claude-usage](https://github.com/amoga-org/claude-usage) | Built by Claude, for Claude |  | 3 weeks ago |
