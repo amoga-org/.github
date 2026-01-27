@@ -4,7 +4,7 @@ Welcome to the Amoga organization!
 
 | Repository | Description | Link | Updated |
 |------------|-------------|------|---------|
-| [claude-usage](https://github.com/amoga-org/claude-usage) | Built by Claude, for Claude |  | 5 days ago |
+| [claude-usage](https://github.com/amoga-org/claude-usage) | Built by Claude, for Claude |  | 6 days ago |
 | [healthchecks](https://github.com/amoga-org/healthchecks) |  |  | 1 month ago |
 | [docs-template](https://github.com/amoga-org/docs-template) | Astro based Template Repo for all Amoga Documentation. |  | 1 month ago |
 
