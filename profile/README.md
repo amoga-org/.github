@@ -4,7 +4,7 @@ Welcome to the Amoga organization!
 
 | Repository | Description | Link | Updated |
 |------------|-------------|------|---------|
-| [ccstatusline](https://github.com/amoga-org/ccstatusline) | 🚀 Beautiful highly customizable statusline for Claude Code CLI with powerline support, themes, and more. |  | 6 days ago |
+| [ccstatusline](https://github.com/amoga-org/ccstatusline) | 🚀 Beautiful highly customizable statusline for Claude Code CLI with powerline support, themes, and more. |  | 1 week ago |
 | [superset](https://github.com/amoga-org/superset) | Apache Superset is a Data Visualization | [Link](https://superset.apache.org/) | 1 week ago |
 | [claude-usage](https://github.com/amoga-org/claude-usage) | Built by Claude, for Claude |  | 2 weeks ago |
 | [healthchecks](https://github.com/amoga-org/healthchecks) |  |  | 1 month ago |
